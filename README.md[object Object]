@@ -1,0 +1,44 @@
+# 📊 RESULTADOS: SEMANA 4 Y 5 – PATRONES CREACIONALES
+
+De acuerdo con los requisitos de la práctica, se presenta el informe comparativo y los diagramas UML correspondientes a los patrones **Singleton**, **Factory** y **Builder**. El código fuente documentado y ejecutable se encuentra versionado en el repositorio de GitHub del curso.
+
+---
+
+##  Informe Comparativo
+
+### 1. Spring Boot y Patrón Singleton
+- **Mecanismo:** Spring gestiona los componentes (Beans) como instancias únicas por defecto.
+- **Implementación:** Al usar anotaciones como `@Service` o `@Component`, el contenedor IoC crea y reutiliza una sola instancia en todo el ciclo de vida de la aplicación.
+- **Propósito:** Optimizar el consumo de memoria y garantizar consistencia en recursos compartidos (conexiones a base de datos, configuraciones globales, servicios de negocio).
+
+### 2. Django ORM y Patrón Factory
+- **Mecanismo:** El método `Model.objects.create()` actúa como una fábrica abstracta.
+- **Implementación:** Centraliza la instanciación y persistencia de modelos sin exponer consultas SQL directas, desacoplando la lógica de creación del motor de base de datos subyacente.
+- **Propósito:** Facilitar la escalabilidad y permitir cambiar de gestor de BD (PostgreSQL, MySQL, SQLite) sin modificar el código de instanciación de objetos.
+
+### 3. Builder en Tkinter vs. Qt
+- **Mecanismo:** Ambos frameworks evitan constructores sobrecargados permitiendo configurar atributos (título, tamaño, geometría, eventos) de forma paso a paso.
+- **Implementación:** En Tkinter se configura mediante llamadas secuenciales a métodos (`title()`, `geometry()`, `configure()`). En Qt se utiliza un enfoque similar con setters o constructores con parámetros por defecto, permitiendo encadenamiento.
+- **Propósito:** Simplificar la creación de interfaces gráficas complejas, mejorando la legibilidad y el mantenimiento del código UI.
+
+---
+
+## 📐 Diagramas UML
+
+### Singleton
+
+┌─────────────────────────────┐
+│ <<Singleton>> │
+│ Config │
+├─────────────────────────────┤
+│ - instance: Config* (static)│
+├─────────────────────────────┤
+│ - Config() │
+│ + getInstance(): Config* │
+│ + showMessage(): void │
+└─────────────────────────────┘
+
+
+
+### Factory Method
+
